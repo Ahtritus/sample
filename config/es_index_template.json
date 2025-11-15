@@ -1,0 +1,44 @@
+{
+  "index_patterns": ["socialposts-v1-*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "refresh_interval": "30s",
+      "index.lifecycle.name": "socialposts-policy",
+      "index.lifecycle.rollover_alias": "socialposts-v1"
+    },
+    "mappings": {
+      "properties": {
+        "platform": { "type": "keyword" },
+        "post_id": { "type": "keyword" },
+        "canonical_id": { "type": "keyword" },
+        "created_at": { "type": "date" },
+        "ingest_ts": { "type": "date" },
+        "user_id": { "type": "keyword" },
+        "user_name": { "type": "keyword" },
+        "user_followers": { "type": "integer" },
+        "text": { "type": "text", "analyzer": "standard" },
+        "language": { "type": "keyword" },
+        "sentiment_score": { "type": "float" },
+        "sentiment_label": { "type": "keyword" },
+        "topics": { "type": "keyword" },
+        "topic_id": { "type": "keyword" },
+        "keywords": { "type": "keyword" },
+        "entities": { "type": "keyword" },
+        "region": { "type": "keyword" },
+        "geo_point": { "type": "geo_point" },
+        "is_bot_score": { "type": "float" },
+        "engagement": {
+          "properties": {
+            "score": { "type": "integer" },
+            "comments": { "type": "integer" },
+            "likes": { "type": "integer" }
+          }
+        },
+        "raw": { "type": "object", "enabled": false }
+      }
+    }
+  }
+}
+

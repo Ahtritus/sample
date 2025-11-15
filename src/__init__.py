@@ -1,0 +1,2 @@
+"""Social trends analyzer package."""
+

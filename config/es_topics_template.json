@@ -1,0 +1,30 @@
+{
+  "index_patterns": ["topics-v1-*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "refresh_interval": "10s"
+    },
+    "mappings": {
+      "properties": {
+        "topic_id": { "type": "keyword" },
+        "keywords": { "type": "keyword" },
+        "top_keywords": { "type": "keyword" },
+        "volume": { "type": "integer" },
+        "velocity": { "type": "float" },
+        "avg_sentiment": { "type": "float" },
+        "created_at": { "type": "date" },
+        "updated_at": { "type": "date" },
+        "sample_posts": {
+          "properties": {
+            "post_id": { "type": "keyword" },
+            "text": { "type": "text" },
+            "sentiment_score": { "type": "float" }
+          }
+        }
+      }
+    }
+  }
+}
+
